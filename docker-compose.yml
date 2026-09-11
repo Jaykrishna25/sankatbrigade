@@ -1,0 +1,23 @@
+# SankatBrigade with Docker Compose.
+#
+#   docker compose up --build            # deterministic assistant
+#   AI_PROVIDER=gemini AI_API_KEY=xxx docker compose up --build   # with AI layer
+#
+# Secrets come from the environment or a local .env file that is NEVER
+# committed (.gitignore already excludes it).
+
+services:
+  sankatbrigade:
+    build: .
+    image: sankatbrigade:latest
+    container_name: sankatbrigade
+    ports:
+      - '8787:8787'
+    environment:
+      PORT: 8787
+      # Leave these unset to run without any AI layer.
+      AI_PROVIDER: ${AI_PROVIDER:-}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_MODEL: ${AI_MODEL:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+    restart: unless-stopped

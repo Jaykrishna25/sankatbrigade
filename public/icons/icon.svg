@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="SankatBrigade">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132043" />
+      <stop offset="1" stop-color="#0b1120" />
+    </linearGradient>
+    <linearGradient id="shield" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#7fb0ff" />
+      <stop offset="1" stop-color="#3b6fd4" />
+    </linearGradient>
+    <radialGradient id="beacon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff5a5f" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#ff5a5f" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <circle cx="256" cy="215" r="150" fill="url(#beacon)" opacity="0.3" />
+  <path
+    d="M256 54 L404 112 V264 c0 92 -62 152 -148 194 C170 416 108 356 108 264 V112 Z"
+    fill="none"
+    stroke="url(#shield)"
+    stroke-width="26"
+    stroke-linejoin="round"
+  />
+  <rect x="176" y="183" width="160" height="26" rx="13" fill="#e8eefc" />
+  <rect x="176" y="243" width="160" height="26" rx="13" fill="#e8eefc" opacity="0.85" />
+  <rect x="190" y="303" width="132" height="26" rx="13" fill="#ff5a5f" />
+</svg>

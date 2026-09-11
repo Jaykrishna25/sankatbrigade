@@ -1,0 +1,40 @@
+{
+  "name": "SankatBrigade — Emergency Coordination Prototype",
+  "short_name": "SankatBrigade",
+  "description": "Turns local emergency reports into structured, triaged incidents for a responder-style command centre. Prototype only — not an emergency service.",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1120",
+  "theme_color": "#0b1120",
+  "categories": ["utilities", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Report an emergency",
+      "short_name": "Report",
+      "url": "./index.html#/report",
+      "description": "Open the citizen emergency report form"
+    },
+    {
+      "name": "Command Center",
+      "short_name": "Command",
+      "url": "./index.html#/command",
+      "description": "Open the SankatBrigade Command Center queue"
+    }
+  ]
+}
