@@ -1,0 +1,37 @@
+/**
+ * Cloudflare Workers configuration.
+ *
+ * SankatBrigade deploys two ways, and this file is only needed for the second:
+ *
+ *   Cloudflare PAGES   — functions/api/assistant.js is picked up automatically.
+ *                        No config file required.
+ *   Cloudflare WORKERS — this file plus worker/index.js serve the built site
+ *                        and the same /api/assistant endpoint.
+ *
+ * Both read the same environment variables, and both fall back to the
+ * deterministic assistant when no AI key is configured:
+ *
+ *   AI_PROVIDER  anthropic | gemini | openai_compatible | mock
+ *   AI_API_KEY   the secret — add it in the dashboard as an ENCRYPTED secret,
+ *                never here and never in the repository
+ *   AI_MODEL     optional override
+ *   AI_BASE_URL  only for openai_compatible
+ *
+ * Build command:  npm run build
+ * Deploy command: npx wrangler deploy
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sankatbrigade",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Hash routing means every real path is index.html.
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

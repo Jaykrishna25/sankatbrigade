@@ -444,6 +444,22 @@ The build is fully static. `vite.config.ts` sets `base: './'` and the app uses h
 6. You get a public address such as `https://sankatbrigade.pages.dev`.
 7. **Every push to `main` redeploys automatically.** Pull requests get their own preview URL.
 
+### If Cloudflare offers you Workers instead of Pages
+
+New Cloudflare accounts are often steered to **Workers** rather than **Pages**. Both are supported and the
+repository already contains what each needs:
+
+| | Pages | Workers |
+| --- | --- | --- |
+| Handler | `functions/api/assistant.js` (automatic) | `worker/index.js` + `wrangler.jsonc` |
+| Build command | `npm run build` | `npm run build` |
+| Output / assets | `dist` | `dist` (via the `assets` binding) |
+| Deploy command | — | `npx wrangler deploy` |
+
+On the Workers setup screen, leave the defaults (`npm run build`, `npx wrangler deploy`, path `/`) and add the
+environment variables afterwards under **Settings → Variables and secrets**, encrypting `AI_API_KEY`. The app
+behaves identically on both.
+
 ## Deployment — GitHub Pages (fallback)
 
 **Option A — GitHub Actions (recommended).** This repository ships
