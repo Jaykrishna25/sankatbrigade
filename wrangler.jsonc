@@ -25,11 +25,25 @@
   "name": "sankatbrigade",
   "main": "worker/index.js",
   "compatibility_date": "2026-09-01",
+
+  // Non-secret settings live here so a deploy cannot wipe them. The KEY never
+  // does: add AI_API_KEY in the dashboard as an encrypted Secret, or with
+  // `npx wrangler secret put AI_API_KEY`. Secrets survive deploys; plain vars
+  // set only in the dashboard may not.
+  "vars": {
+    "AI_PROVIDER": "gemini"
+  },
+
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
     // Hash routing means every real path is index.html.
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    // Without this, Cloudflare serves static assets BEFORE the Worker runs, so
+    // /api/assistant would fall through to the SPA and return index.html
+    // instead of JSON. Running the Worker first lets it answer /api/* and hand
+    // everything else to env.ASSETS.fetch().
+    "run_worker_first": true
   },
   "observability": {
     "enabled": true
